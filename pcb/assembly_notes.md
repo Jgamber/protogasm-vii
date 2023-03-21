@@ -1,3 +1,5 @@
+# Circuit Assembly
+
 protogasm_layout.png shows how I build my boards - the wire goes into the hole
 next to a component's leg and is then bent down to meet the leg.
 
@@ -18,14 +20,13 @@ Arduino.  I simply clipped them off with wire cutters.
 
 Install the remaining passives and wiring.
 
-Push the pin headers into the Arudino, then set the perfboard on top.  Solder a
-couple pins from each strip.  Do it quickly and just use a dab of solder to tack
-it in place or you'll risk damaging the Arduino's connectors.  Remove the
-perfboard from the Arduino, solder the remaining pins, then go back and clean up
-the ones you tacked.
+Break away some pin headers to the correct lengths and install them onto the shield (perfboard)
+with the short end poking above. Mount it into the Arduino, and solder the top of each pin.
 
-The Neopixel Ring is installed on three .100 breakaway header pins for PWR, GND,
-and OUT.  Do not install a pin on IN because it will short against the USB port.
+The Neopixel Ring is installed/elevated on three .100 breakaway header pins for PWR, GND,
+and OUT.  Do not install a pin header on IN because it will short against the USB port. (The perfboard
+touches the metal on the Arduino's USB port.) I soldered a wire to IN and have the other end simply fit
+into pin 10, so I can still remove the ring when needed.
 The pins need to tilt slightly so place the Neopixel Ring on them to hold them
 in the correct orientation before soldering them to the board.
 
