@@ -1,4 +1,4 @@
-# protogasm VII
+# Protogasm VII
 Version two includes code refactoring, bug fixes, and I may fix up the STL models.
 
 
@@ -16,9 +16,12 @@ Some aspects have been simplified compared to the original electronics:
 ## Getting started
 
 * [RTFM](User%20Guide.pdf)
+
+* [Build the control board](pcb/)
+* Flash the Arduino with the [Protogasm VII Code](code/protogasm_vii.ino)
+* [Print the case](case/)
 * [Build the vibrator](vibrator/)
-* [Build the control board](pcb/assembly_notes.md)
-* [Print the case for the controller](case/)
+* *TODO* Setup the plug
 
 #### Fine print
 This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International Licence, available at http://creativecommons.org/licenses/by-nc/4.0/.
