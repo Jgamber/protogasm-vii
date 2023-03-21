@@ -17,6 +17,7 @@ Some aspects have been simplified compared to the original electronics:
 
 * [RTFM](User%20Guide.pdf)
 
+* [Buy the parts](BOM.md)
 * [Build the control board](pcb/)
 * Flash the Arduino with the [Protogasm VII Code](code/protogasm_vii.ino)
 * [Print the case](case/)
