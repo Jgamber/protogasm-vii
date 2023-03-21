@@ -1,4 +1,7 @@
-# protogasm
+# protogasm VII
+Version two includes code refactoring, bug fixes, and I may fix up the STL models.
+
+
 Software and hardware for Arduino-based orgasm prediction / detection ... on protoboard!
 
 The nogasm is an amazing toy.  I wanted to make something easier to hack and more accessible to the homebuilder.  Fortunately headcrabned was kind enough to open source the whole thing.
