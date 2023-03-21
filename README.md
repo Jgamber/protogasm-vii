@@ -15,7 +15,7 @@ Some aspects have been simplified compared to the original electronics:
 
 ## Getting started
 
-* [RTFM](user_guide/Nogasm%20User%20Guide.pdf)
+* [RTFM](User%20Guide.pdf)
 * [Build the vibrator](vibrator/)
 * [Build the control board](pcb/assembly_notes.md)
 * [Print the case for the controller](case/)
