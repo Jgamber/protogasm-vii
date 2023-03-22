@@ -1,5 +1,13 @@
 # Protogasm VII
-Version two includes code refactoring, bug fixes, and I may fix up the STL models.
+Version two includes code refactoring, and bug fixes.
+I have also fixed up the STL models.
+- Cleaned up SCAD Code
+- The print time has been reduced by about half
+- Removed the screw holes (The encoder knob can hold the lid on)
+- Made the roof/floor less thick
+- Removed extra lip around encoder knob hole
+- Arduino fits better
+- Pressure sensor fits better, USB and power jack holes removed, as they are not used in the case.
 
 
 Software and hardware for Arduino-based orgasm prediction / detection ... on protoboard!
