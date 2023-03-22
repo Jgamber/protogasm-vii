@@ -3,7 +3,7 @@ Version two includes code refactoring, and bug fixes.
 I have also fixed up the STL models.
 - Cleaned up SCAD Code
 - The print time has been reduced by about half
-- Removed the screw holes (The encoder knob can hold the lid on)
+- Removed the screw holes (Lid snaps on now)
 - Made the roof/floor less thick
 - Removed extra lip around encoder knob hole
 - Arduino fits better

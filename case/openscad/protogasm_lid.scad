@@ -11,7 +11,10 @@ include <protogasm_param.scad>
 
 extra_headroom = 11.36;
 
-knob_position = [-1.27+7,5,0];
+knob_position = [-1,-3,0];
+
+width = 65.3 - 1;
+wide = 65.3 - 1;
 
 //------------------------------------------------------------------------- MAIN BLOCK
 difference() {
@@ -21,7 +24,7 @@ difference() {
 		linear_extrude(height = height/2 + blockLockSize + extra_headroom, convexity = 10)
 		minkowski() {
 			square([width, wide], center = true);
-			circle(roundR-1);
+			circle(roundR-0.6);
 		}
 	}
 																	// SUBSTRACT
