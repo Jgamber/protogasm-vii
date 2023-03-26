@@ -27,7 +27,8 @@ difference() {
 			circle(roundR-0.6);
 		}
 	}
-																	// SUBSTRACT
+
+	// SUBSTRACT
 	union() {
 		// lift floor height
 		translate([0, 0, floorHeight]) {
