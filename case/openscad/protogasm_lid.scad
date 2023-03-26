@@ -74,6 +74,14 @@ difference() {
                 // Cut pressure sensor hole
 				translate([0, usbHolePosition - usbWide, -(usbHeight-10)/2])
 				cube([10, usbWide-3, usbHeight], center=true);
+                
+                // Cut power in hole
+                translate([0, -2, (powerJackHeight-9)/2])
+                cube([10, powerJackWide, powerJackHeight], center=true);
+                
+                // Cut power out hole
+                translate([pcbLenght + 10, -2, (powerJackHeight-9)/2])
+                cube([10, powerJackWide, powerJackHeight], center=true);
 			}
 		}
 

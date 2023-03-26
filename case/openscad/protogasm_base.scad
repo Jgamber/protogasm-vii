@@ -80,8 +80,12 @@ difference() {
 				translate([0, usbHolePosition - usbWide, (usbHeight-2)/2])
 				cube([10, usbWide-3, usbHeight], center=true);
                 
-                // Cut power jack hole
+                // Cut power in hole
                 translate([0, -2, (powerJackHeight-6)/2])
+                cube([10, powerJackWide, powerJackHeight], center=true);
+                
+                // Cut power out hole
+                translate([pcbLenght + 10, -2, (powerJackHeight-6)/2])
                 cube([10, powerJackWide, powerJackHeight], center=true);
 			}
 		}
