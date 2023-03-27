@@ -20,7 +20,7 @@
  * speed (set in the green menu) over 30 seconds. If a near-orgasm is detected,
  * the vibrator abruptly turns off for 15 seconds, then begins ramping up again.
  * 
- * The motor will beep during power on/off, and if the plug pressure rises above
+ * The LEDs will flash during power on/off, and if the plug pressure rises above
  * the maximum the board can read - this condition could lead to a missed orgasm 
  * if unchecked. The analog gain for the sensor is adjustable via a trimpot to
  * accomidate different types of plugs that have higher/lower resting pressures.
@@ -116,17 +116,19 @@ int sensitivity = 0; //orgasm detection sensitivity, persists through different 
 
 
 //=======Setup=======================================
-//Beep out tones over the motor by frequency (1047,1396,2093) may work well
-void beep_motor(int f1, int f2, int f3){
-  analogWrite(MOTPIN, 0);
-  tone(MOTPIN, f1);
-  delay(250);
-  tone(MOTPIN, f2);
-  delay(250);
-  tone(MOTPIN, f3);
-  delay(250);
-  noTone(MOTPIN);
-  analogWrite(MOTPIN, motSpeed);
+void alert(CRGB col) {
+  FastLED.setBrightness(10);
+
+  for (int i = 0; i < 3; i++) {
+    fill_gradient_RGB(leds, 0, col, NUM_LEDS - 1, col);
+    FastLED.show();
+    delay(150);
+    fill_gradient_RGB(leds, 0, CRGB::Black, NUM_LEDS - 1, CRGB::Black);
+    FastLED.show();
+    delay(150);
+  }
+
+  FastLED.setBrightness(BRIGHTNESS);
 }
 
 void setup() {
@@ -137,9 +139,9 @@ void setup() {
 
   // Classic AVR based Arduinos have a PWM frequency of about 490Hz which
   // causes the motor to whine.  Change the prescaler to achieve 31372Hz.
-  TCCR1B |= (1 << CS10);
-  TCCR1B |= (1 << CS11);
-  TCCR1B |= (1 << CS12);
+  //TCCR1B |= (1 << CS10);
+  //TCCR1B |= (1 << CS11);
+  //TCCR1B |= (1 << CS12);
 
   pinMode(MOTPIN, OUTPUT); //Enable "analog" out (PWM)
 
@@ -147,9 +149,9 @@ void setup() {
 
   raPressure.clear(); //Initialize a running pressure average
 
-  digitalWrite(MOTPIN, LOW);//Make sure the motor is off
+  digitalWrite(MOTPIN, LOW); //Make sure the motor is off
 
-  delay(3000); // 3 second delay for recovery
+  delay(500); // delay for recovery
 
   Serial.begin(115200);
 
@@ -159,7 +161,7 @@ void setup() {
   //Recall saved settings from memory
   sensitivity = EEPROM.read(SENSITIVITY_ADDR);
   maxSpeed = min(EEPROM.read(MAX_SPEED_ADDR), MOT_MAX); //Obey the MOT_MAX the first power cycle after changing it.
-  beep_motor(1047, 1396, 2093); //Power on beep
+  alert(CRGB::Green); //Power on animation
 }
 
 //=======Util Functions=================
@@ -279,7 +281,7 @@ void run_opt_pres() {
 
 //Poll the knob click button, and check for long/very long presses as well
 uint8_t check_button() {
-  static bool lastBtn = ENC_SW_DOWN;
+  static bool lastBtn = ENC_SW_UP;
   static unsigned long keyDownTime = 0;
   uint8_t btnState = BTN_NONE;
   bool thisBtn = digitalRead(ENC_SW);
@@ -333,12 +335,12 @@ uint8_t set_state(uint8_t btnState, uint8_t state) {
     fill_gradient_RGB(leds, 0, CRGB::Black, NUM_LEDS - 1, CRGB::Black); //Turn off LEDS
     FastLED.show();
     analogWrite(MOTPIN, 0);
-    beep_motor(2093, 1396, 1047);
+    alert(CRGB::Red);
     analogWrite(MOTPIN, 0); //Turn Motor off
 
     while (digitalRead(ENC_SW)) delay(1);
     Serial.println("power on");
-    beep_motor(1047, 1396, 2093);
+    alert(CRGB::Green);
     return MANUAL;
   } else if (btnState == BTN_SHORT) {
     switch (state) {
@@ -413,7 +415,7 @@ void loop() {
   FastLED.show(); //Update the physical LEDs to match the buffer in software
 
   //Alert that the Pressure voltage amplifier is railing, and the trim pot needs to be adjusted
-  if (pressure > 4030) beep_motor(2093, 2093, 2093); //Three high beeps
+  if (pressure > 4030) alert(CRGB::DarkOrange); // Flash red
 
   //Report pressure and motor data over USB for analysis / other uses. timestamps disabled by default
   //Serial.print(millis()); //Timestamp (ms)
