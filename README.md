@@ -1,6 +1,7 @@
 # Protogasm VII
 Version two includes code refactoring, and bug fixes.
 I have also fixed up the STL models.
+- Added encoder knob model for printing
 - Cleaned up SCAD Code
 - The print time has been reduced by about half
 - Removed the screw holes (Lid snaps on now)

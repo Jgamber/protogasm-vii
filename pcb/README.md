@@ -31,4 +31,5 @@ The pins need to tilt slightly so place the Neopixel Ring on them to hold them
 in the correct orientation before soldering them to the board.
 
 The power out to the motor is taken from either side of the diode.  I made a
-short cable with a connector and soldered it to the pins.
+short cable with a female power jack DC connector and soldered it to the pins.
+Then on the other end of the vibrator a male power jack adapter.
